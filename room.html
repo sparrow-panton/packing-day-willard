@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Bedroom - Packing for Willard Asylum</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f1e9;
+      color: #333;
+    }
+    
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1, h2, h3 {
+      color: #5d4a3e;
+    }
+    
+    h1 {
+      text-align: center;
+      border-bottom: 2px solid #e0d5c1;
+      padding-bottom: 10px;
+    }
+    
+    button {
+      background-color: #5d4a3e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px 0;
+      cursor: pointer;
+      font-family: Georgia, serif;
+    }
+    
+    button:hover {
+      background-color: #7c6655;
+    }
+    
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    
+    .room-description {
+      background-color: #f9f1e2;
+      padding: 20px;
+      border-left: 4px solid #5d4a3e;
+      margin-bottom: 25px;
+      font-style: italic;
+    }
+    
+    .instructions {
+      background-color: #f5f1e9;
+      padding: 15px;
+      border-left: 4px solid #5d4a3e;
+      margin-bottom: 20px;
+    }
+    
+    .items-container {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      flex: 2;
+    }
+    
+    .item {
+      background-color: #f5f1e9;
+      padding: 15px;
+      border: 1px solid #e0d5c1;
+      cursor: pointer;
+    }
+    
+    .item:hover {
+      background-color: #e0d5c1;
+    }
+    
+    .item.selected {
+      background-color: #e0d5c1;
+      border: 1px solid #5d4a3e;
+      position: relative;
+    }
+    
+    .item.selected::after {
+      content: "✓";
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: #5d4a3e;
+    }
+    
+    .item-details {
+      flex: 1;
+      padding: 15px;
+      background-color: #f9f1e2;
+      min-height: 100px;
+    }
+    
+    .suitcase {
+      background-color: #e0d5c1;
+      padding: 20px;
+      border: 1px solid #5d4a3e;
+    }
+    
+    .selected-items {
+      min-height: 50px;
+      margin-bottom: 20px;
+    }
+    
+    .selected-item {
+      background-color: white;
+      padding: 10px;
+      margin: 5px 0;
+      border: 1px solid #5d4a3e;
+    }
+    
+    .room-image img {
+      max-width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    @media (max-width: 768px) {
+      .items-container {
+        flex-direction: column;
+      }
+      
+      .items-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Bedroom</h1>
+    
+    <div class="room-image" style="text-align: center; margin-bottom: 20px;">
+      <img src="https://cdn.glitch.global/9178042c-41a5-497b-ab7f-a55c719ea0c2/room.png?v=1747020860288" alt="Your bedroom with open suitcase">
+    </div>
+    
+    <div class="room-description">
+      <p>This room has been yours for twenty years—a sanctuary of sorts. Now an empty suitcase waits on the floor, small and insufficient to hold a life. You are Sarah, a painter and violinist in your mid-forties, now deemed unstable. You must choose what few possessions will accompany you to Willard. What small pieces of yourself will you be permitted to keep?</p>
+    </div>
+    
+    <div class="instructions">
+      <p>Look around your room. You can only take 6 items with you to Willard Asylum. Choose carefully.</p>
+    </div>
+    
+    <div class="items-container">
+      <div class="items-grid" id="items-grid">
+        <!-- Items will be added here by JavaScript -->
+      </div>
+      
+      <div class="item-details">
+        <h3>Item Details</h3>
+        <p id="item-description">Hover over an item to see its description.</p>
+      </div>
+    </div>
+    
+    <div class="suitcase">
+      <h2>Your Suitcase (<span id="items-count">0</span>/6)</h2>
+      <div id="selected-items" class="selected-items">
+        <p id="empty-suitcase">Your suitcase is empty.</p>
+      </div>
+      
+      <div style="text-align: center;">
+        <button id="finish-packing-btn" onclick="finishPacking()" disabled>Finish Packing</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Item data
+    const items = [
+      { 
+        id: 'violin', 
+        name: 'Violin', 
+        description: 'Your violin, resting in its case by the fireplace. The polished wood catches the light.',
+        reflection: 'I\'ve not played since the thaw, though I still tune the strings. The songs live in my wrists, even now.'
+      },
+      { 
+        id: 'bible', 
+        name: 'Family Bible', 
+        description: 'Your grandmother\'s Bible, visible on the bookshelf. The spine is worn from years of handling.',
+        reflection: 'Not for belief, not any longer. I read the Psalms as one might trace a lace hem—slowly, with care, until the silence softens.'
+      },
+      { 
+        id: 'sewing', 
+        name: 'Sewing Kit', 
+        description: 'Your small sewing kit with scissors and threads, sitting on the mantelpiece.',
+        reflection: 'I was never skilled, but I mended what I could. If a hem may be fixed, I thought, perhaps I might also be.'
+      },
+      { 
+        id: 'letters', 
+        name: 'Bundle of Letters', 
+        description: 'Letters tied with string, kept in the cupboard. Some sent, some received, some never posted.',
+        reflection: 'A few are mine. A few were never posted. One simply reads: "I was here. Please remember me."'
+      },
+      { 
+        id: 'photographs', 
+        name: 'Photographs', 
+        description: 'Small framed photographs sitting on the mantelpiece and dresser.',
+        reflection: 'I have cut the faces from two. It was not unkindness. I wished only to recall the feeling, not the names.'
+      },
+      { 
+        id: 'paintbrush', 
+        name: 'Paintbrushes', 
+        description: 'A jar of paintbrushes on the mantelpiece, some bristles still stained with color.',
+        reflection: 'The bristles remember colors I no longer see. My hands still move as though they hold them, even in sleep.'
+      },
+      { 
+        id: 'teapot', 
+        name: 'Porcelain Teapot', 
+        description: 'Your floral teapot sitting on the side table, painted with delicate roses.',
+        reflection: 'It\'s a quiet thing, grief. It waits by the kettle and never leaves. I shall miss the ritual of brewing, of waiting, of the first sip that promises all shall be well.'
+      },
+      { 
+        id: 'shawl', 
+        name: 'Embroidered Shawl', 
+        description: 'A shawl draped across the foot of the bed, embroidered with small flowers.',
+        reflection: 'Winter evenings by the fire, needle moving in and out. Each stitch a moment I shan\'t have again. The pattern holds my history better than I do.'
+      },
+      { 
+        id: 'hairbrush', 
+        name: 'Silver Hairbrush', 
+        description: 'A silver-handled hairbrush sitting on the mantelpiece among other personal items.',
+        reflection: 'One hundred strokes each night, my mother taught me. I wonder if they shall allow me to keep my hair long. I have heard stories.'
+      },
+      { 
+        id: 'journal', 
+        name: 'Journal', 
+        description: 'Your leather-bound journal visible in the bookcase, half-filled with observations and sketches.',
+        reflection: 'These pages know me better than any living person. I have written truths here I haven\'t spoken aloud. Will they read it? Will they understand?'
+      },
+      { 
+        id: 'pocketwatch', 
+        name: 'Pocket Watch', 
+        description: 'A small gold pocket watch sitting on the mantelpiece, still ticking.',
+        reflection: 'Time moves differently for me now. Too quick and too slow at once. Perhaps at Willard, the hours will be merciful. Perhaps they will not.'
+      },
+      { 
+        id: 'heirloom', 
+        name: 'Mother\'s Brooch', 
+        description: 'A small brooch in the shape of a bird, visible among the items on the dresser.',
+        reflection: 'Mother said it had been in our family for generations. "For strength," she told me, though I\'ve found little of that lately. I ought to have worn it more.'
+      }
+    ];
+    
+    // Game state
+    let selectedItems = [];
+    const MAX_ITEMS = 6;
+    
+    // DOM elements
+    const itemsGrid = document.getElementById('items-grid');
+    const itemDescription = document.getElementById('item-description');
+    const selectedItemsContainer = document.getElementById('selected-items');
+    const itemsCount = document.getElementById('items-count');
+    const emptyMessage = document.getElementById('empty-suitcase');
+    const finishPackingBtn = document.getElementById('finish-packing-btn');
+    
+    // Initialize the room
+    function init() {
+      // Populate the items grid
+      items.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('item');
+        itemElement.setAttribute('data-id', item.id);
+        itemElement.innerHTML = `<h3>${item.name}</h3>`;
+        
+        // Add event listeners
+        itemElement.addEventListener('click', () => toggleItem(item, itemElement));
+        itemElement.addEventListener('mouseover', () => showItemDescription(item));
+        
+        itemsGrid.appendChild(itemElement);
+      });
+    }
+    
+    // Show item description
+    function showItemDescription(item) {
+      itemDescription.textContent = item.description;
+    }
+    
+    // Toggle item selection
+    function toggleItem(item, itemElement) {
+      const index = selectedItems.findIndex(selected => selected.id === item.id);
+      
+      if (index === -1) {
+        // Item not selected, try to add it
+        if (selectedItems.length < MAX_ITEMS) {
+          selectedItems.push(item);
+          itemElement.classList.add('selected');
+          updateSuitcase();
+        }
+      } else {
+        // Item already selected, remove it
+        selectedItems.splice(index, 1);
+        itemElement.classList.remove('selected');
+        updateSuitcase();
+      }
+    }
+    
+    // Update suitcase display
+    function updateSuitcase() {
+      // Update count
+      itemsCount.textContent = selectedItems.length;
+      
+      // Clear selected items
+      selectedItemsContainer.innerHTML = '';
+      
+      // Show empty message if needed
+      if (selectedItems.length === 0) {
+        selectedItemsContainer.appendChild(emptyMessage);
+        finishPackingBtn.disabled = true;
+      } else {
+        finishPackingBtn.disabled = false;
+        
+        // Add each selected item
+        selectedItems.forEach(item => {
+          const itemElement = document.createElement('div');
+          itemElement.classList.add('selected-item');
+          itemElement.textContent = item.name;
+          selectedItemsContainer.appendChild(itemElement);
+        });
+      }
+    }
+    
+    // Finish packing and go to reflection page
+    function finishPacking() {
+      if (selectedItems.length > 0) {
+        // Save selected items to localStorage
+        localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+        
+        // Go to reflection page
+        window.location.href = 'reflection.html';
+      }
+    }
+    
+    // Initialize when the page loads
+    window.addEventListener('load', init);
+  </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: If you use this website, please cite it as follows.
+title: "Packing Day: Willard Asylum"
+authors:
+  - family-names: Panton
+    given-names: Amy
+version: "1.0.0"
+date-released: "2025-08-26"
+type: software
+license: MIT
+repository-code: https://github.com/REPLACE_ME/packing-day-willard
+preferred-citation:
+  type: software
+  title: "Packing Day: Willard Asylum"
+  authors:
+    - family-names: Panton
+      given-names: Amy
+  version: "1.0.0"

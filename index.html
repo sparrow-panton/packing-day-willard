@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packing Day: Willard Asylum</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f1e9;
+      color: #333;
+    }
+    
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1, h2, h3 {
+      color: #5d4a3e;
+    }
+    
+    h1 {
+      text-align: center;
+      border-bottom: 2px solid #e0d5c1;
+      padding-bottom: 10px;
+    }
+    
+    button {
+      background-color: #5d4a3e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px 0;
+      cursor: pointer;
+      font-family: Georgia, serif;
+    }
+    
+    button:hover {
+      background-color: #7c6655;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .letter-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    
+    .letter-content {
+      background-color: #f9f1e2;
+      padding: 30px;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      border: 1px solid #5d4a3e;
+    }
+    
+    .letter-content pre {
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+    
+    .intro-next {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Packing Day</h1>
+    <p>It's April 1870, and you are Sarah Holloway, an artist and musician living in Ovid, New York. This morning a letter arrived from your doctor that changed everything.</p>
+    
+    <div style="text-align: center;">
+      <button onclick="document.getElementById('letter-overlay').style.display = 'flex';">Read the Letter</button>
+    </div>
+    
+    <div id="letter-overlay" class="letter-overlay" style="display: none;">
+      <div class="letter-content">
+        <pre>
+Mrs. Sarah Holloway
+Cedar Creek Farm
+Ovid, New York
+
+April 15, 1870
+
+Dear Mrs. Holloway,
+
+It is with careful consideration that we inform you of the decision reached by Dr. James Henderson, in consultation with your husband, regarding your recent episodes of nervous exhaustion and melancholia.
+
+Your condition has been determined to be of a chronic nature requiring specialized treatment beyond what can be provided at home. Arrangements have been made for your admission to the Willard Asylum for the Chronic Insane on Thursday next.
+
+The institution offers the most modern treatments for cases such as yours, in a peaceful setting by Seneca Lake. You will be under the care of competent physicians who specialize in diseases of the mind and nervous system.
+
+You are permitted one small suitcase containing personal items. Please note that all items will be inspected upon arrival, and those deemed unsuitable or potentially harmful will be returned to your family.
+
+A carriage will arrive at 9 o'clock Thursday morning to transport you to Willard.
+
+Sincerely,
+
+Edwin R. Sherman
+Clerk of Seneca County
+        </pre>
+        <div style="text-align: center;">
+          <button onclick="document.getElementById('letter-overlay').style.display = 'none'; document.getElementById('intro-next').style.display = 'block';">Close Letter</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="intro-next" class="intro-next hidden" style="display: none;">
+      <p>You are terrified. The Willard Asylum for the Chronic Insane? Is this really happening? You have heard stories whispered about that place. People go in, and never get out. You have until tomorrow morning to pack your things. What will you take with you?</p>
+      
+      <div style="text-align: center;">
+        <button onclick="window.location.href = 'room.html';">Begin Packing</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

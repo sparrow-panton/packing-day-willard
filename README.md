@@ -1,41 +1,49 @@
-# packing-day-willard
-A contemplative website inviting visitors to “pack” belongings for admission to Willard Asylum. Companion to my IJPT article on palimpsestic theology.
-Packing Day: Willard Asylum
+# Packing Day: Willard Asylum
 
-An interactive contemplative website that invites visitors to “pack” belongings for admission to Willard Asylum.
+A small, contemplative, static website that invites visitors to pack six belongings for a fictional patient being admitted to Willard Asylum. Built with HTML/CSS/JS (no framework).
 
-This digital artifact is a companion to my article:
-Panton, Amy (2025). “Palimpsestic Theology: A Methodology for Engaging Psychiatric Archives in Practical Theology.” International Journal of Practical Theology. (forthcoming).
+**Author:** Amy (Sparrow) Panton  
+**Co‑creation:** with Claude (assistive scribing)  
+**License:** See `LICENSE`
 
-About the Project
+---
 
-“Packing Day” is both experiment and ritual. Visitors choose six belongings to pack, echoing the historical practices of institutional admission at Willard Asylum. The project brings theological reflection into dialogue with psychiatric archives, memory, and embodiment.
+## Quick Deploy — GitHub Pages
 
-Built with simple HTML, CSS, and JavaScript, the site requires no special frameworks and runs in any browser.
+1. Create a new GitHub repository, e.g. `packing-day-willard` (Public is fine).
+2. Upload the contents of this folder (or push via git). Make sure `index.html` is at the repository root.
+3. In your repo, go to **Settings → Pages**:
+   - **Source:** `Deploy from a branch`
+   - **Branch:** `main` (or `master`) — **folder:** `/ (root)`
+   - Save. GitHub will build Pages and give you a live URL like: `https://<username>.github.io/packing-day-willard/`.
 
-How to View
+> Tip: If you're using a subfolder, ensure links are relative and test once live.
 
-Visit the live site here:
-👉 https://<your-username>.github.io/packing-day-willard/
+## Cite / Archive
 
-For permanence, this project will also be archived with a DOI via Zenodo.
+- For permanence, archive a copy on **Zenodo** or **OSF** to mint a DOI.  
+- Add that DOI link to the IJPT article footnote as the stable reference.
 
-Citation
+### Example citation
 
-If you reference or use this artifact, please cite it as:
+> Panton, Amy. *Packing Day: Willard Asylum* (website), 2025. GitHub Pages. DOI: _forthcoming_.
 
-Panton, Amy. Packing Day: Willard Asylum. GitHub Pages, 2025. DOI: forthcoming.
+Add or edit `CITATION.cff` if you want automatic citation metadata in the repo.
 
-Accessibility
+## Accessibility (A11y) Checklist
 
-Semantic HTML with headings and labels.
+- Semantic HTML: headings in order (`h1` → `h2`), lists for choices.
+- Buttons/links have clear text; avoid “click here.”
+- Keyboard navigation: ensure focus styles are visible; all interactive elements are reachable with `Tab`.
+- Color contrast: verify text/background contrast meets WCAG AA (≥ 4.5:1).
+- Alt text: all images (if any) have descriptive `alt` text. Decorative images use empty alt (`alt=""`).
+- Motion sensitivity: avoid auto‑playing animations; keep interactions user‑initiated.
+- ARIA: use landmarks (`<main>`, `<nav>`) if helpful; avoid over‑ARIA.
 
-Keyboard navigation supported.
+## Local Preview
 
-High-contrast colors and alt text for images.
+Just open `index.html` in a browser. No build needed.
 
-Content designed for contemplative pacing and minimal cognitive overload.
+---
 
-License
-
-MIT License.
+© 2025 Amy Panton

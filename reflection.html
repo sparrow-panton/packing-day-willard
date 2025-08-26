@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Night Before - Packing for Willard Asylum</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f1e9;
+      color: #333;
+    }
+    
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1, h2, h3 {
+      color: #5d4a3e;
+    }
+    
+    h1 {
+      text-align: center;
+      border-bottom: 2px solid #e0d5c1;
+      padding-bottom: 10px;
+    }
+    
+    button {
+      background-color: #5d4a3e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px 0;
+      cursor: pointer;
+      font-family: Georgia, serif;
+    }
+    
+    button:hover {
+      background-color: #7c6655;
+    }
+    
+    .reflection {
+      margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0d5c1;
+    }
+    
+    .reflection h3 {
+      margin-bottom: 10px;
+    }
+    
+    .reflection-text {
+      font-style: italic;
+      color: #5d4a3e;
+      padding-left: 15px;
+      border-left: 3px solid #e0d5c1;
+    }
+    
+    .closing-text {
+      text-align: center;
+      font-style: italic;
+      margin: 30px 0;
+      font-size: 1.1em;
+    }
+    
+    .final-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+    
+    .learn-more {
+      display: inline-block;
+      background-color: #7c6655;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+    }
+    
+    .learn-more:hover {
+      background-color: #5d4a3e;
+    }
+    
+    .letter-button {
+      display: block;
+      margin: 30px auto;
+      background-color: #5d4a3e;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      cursor: pointer;
+      font-family: Georgia, serif;
+      font-size: 1.1em;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    
+    .overlay-content {
+      background-color: #f9f1e2;
+      padding: 30px;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+      border: 1px solid #5d4a3e;
+      position: relative;
+    }
+    
+    .letter-content {
+      font-family: 'Georgia', serif;
+      line-height: 1.8;
+    }
+    
+    .letter-date {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+    
+    .letter-signature {
+      margin-top: 30px;
+      font-style: italic;
+    }
+    
+    .feedback-section {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 2px solid #e0d5c1;
+      text-align: center;
+    }
+    
+    .email-invitation {
+      background-color: #f9f1e2;
+      padding: 25px;
+      border-radius: 5px;
+      margin: 20px 0 30px;
+      text-align: center;
+    }
+    
+    .email-address {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #5d4a3e;
+      margin: 15px 0;
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .final-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .learn-more {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The Night Before</h1>
+    
+    <p>The house is quiet now. Your suitcase sits by the door, packed with the few belongings you've chosen to take to Willard. Tomorrow morning, the carriage will arrive.</p>
+    
+    <p>You sit alone in your room, looking at each item one last time...</p>
+    
+    <div id="reflections">
+      <!-- Reflections will be added here by JavaScript -->
+    </div>
+    
+    <p class="closing-text">You close your suitcase. Whatever tomorrow brings, these few treasures will be all that connects you to the life you're leaving behind.</p>
+    
+    <p>Before you retire for the night, you decide to write one last letter to your family. You know they may never see it, but you must put your thoughts to paper.</p>
+    
+    <button class="letter-button" onclick="document.getElementById('sarah-letter').style.display = 'flex';">Read Sarah's Letter to Her Family</button>
+    
+    <div id="sarah-letter" class="overlay">
+      <div class="overlay-content letter-content">
+        <div class="letter-date">April 15, 1870</div>
+        
+        <p>My dear family,</p>
+        
+        <p>I write this the night before I am to be taken to Willard. I find I cannot sleep, though I must try. The carriage arrives at nine.</p>
+        
+        <p>Do not believe what they say about me. I am not mad. I am not dangerous. Dr. Henderson speaks of "melancholia" and "nervous exhaustion" as though they are ailments of the mind rather than reasonable responses to an unreasonable world.</p>
+        
+        <p>James, I cannot forgive you for this. Twenty years of marriage, and you choose to listen to doctors who have spent barely twenty minutes in my company. Did my painting disturb you so much? Was my music too strange for your sensibilities? Or was it merely that I began to speak truths you did not wish to hear?</p>
+        
+        <p>They say I have been seeing things that are not there. I see only what others refuse to notice. The way the light fractures through the glass. How shadows speak in the corners of rooms. The colors that hide beneath the surface of everything.</p>
+        
+        <p>I have packed what they will allow me. Six items to represent a lifetime. It is cruel beyond measure.</p>
+        
+        <p>I beg you, if there is any love remaining in your hearts for me, do not let me stay at that place forever. Visit me. Write to me. Remember who I was before they began calling me ill. Remember the woman who played violin at Christmas, who mended your clothes, who taught you the names of birds and wildflowers.</p>
+        
+        <p>I fear what they will do to me there. I have heard whispers of their treatments. Of cold baths and restraints. Of women whose hair is cut short and whose spirits are broken shorter still.</p>
+        
+        <p>If I return changed, know it was not by choice but by force. If I do not return at all, remember me as I truly was, not as they described me in their cold medical language.</p>
+        
+        <p>I was here. I existed. I was more than what they wrote in their reports.</p>
+        
+        <div class="letter-signature">— Sarah</div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+          <button onclick="document.getElementById('sarah-letter').style.display = 'none'; document.getElementById('feedback-section').scrollIntoView({behavior: 'smooth'});">Close Letter</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="feedback-section" id="feedback-section">
+      <h2>Share Your Reflections</h2>
+      
+      <p>Thank you for experiencing Sarah's story. If you'd like to share your thoughts about this experience, what items you chose to pack, or any reflections you have about institutionalization past or present, I'd love to hear from you.</p>
+      
+      <div class="email-invitation">
+        <p>Please email me with your reflections at:</p>
+        <span class="email-address">hello.amysbookshelf@gmail.com</span>
+        <p>Feel free to tell me which items you chose to pack and how this experience affected you.</p>
+      </div>
+    </div>
+    
+    <div class="final-buttons">
+      <button onclick="window.location.href = 'index.html';">Start Over</button>
+      <a href="https://amysbookshelf.ca" target="_blank" class="learn-more">See More of Amy's Work</a>
+    </div>
+  </div>
+
+  <script>
+    // Load selected items from localStorage
+    function loadReflections() {
+      const reflectionsContainer = document.getElementById('reflections');
+      const selectedItemsJSON = localStorage.getItem('selectedItems');
+      
+      if (selectedItemsJSON) {
+        const selectedItems = JSON.parse(selectedItemsJSON);
+        
+        if (selectedItems.length > 0) {
+          // Create reflection for each item
+          selectedItems.forEach(item => {
+            const reflectionElement = document.createElement('div');
+            reflectionElement.classList.add('reflection');
+            reflectionElement.innerHTML = `
+              <h3>${item.name}</h3>
+              <p class="reflection-text">${item.reflection}</p>
+            `;
+            reflectionsContainer.appendChild(reflectionElement);
+          });
+        } else {
+          // No items were selected (this shouldn't happen normally)
+          reflectionsContainer.innerHTML = '<p>Your suitcase is empty. What will you do without any belongings at Willard?</p>';
+        }
+      } else {
+        // No items in localStorage (user might have navigated directly to this page)
+        reflectionsContainer.innerHTML = `
+          <p>You haven't selected any items to pack. Please return to the beginning to make your choices.</p>
+          <div style="text-align: center; margin-top: 20px;">
+            <button onclick="window.location.href = 'index.html';">Return to Start</button>
+          </div>
+        `;
+      }
+    }
+    
+    // Initialize the page
+    window.addEventListener('load', loadReflections);
+  </script>
+</body>
+</html>
